@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-@Table(name="email_model")
-public class EmailModel {
-	
+@Table(name="simple_email")
+public class SimpleEmailModel {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -32,6 +32,4 @@ public class EmailModel {
 	@Column(name="subject")
 	private String subject;
 	
-	@Column(name="attachment")
-	private String attachment; 
 }

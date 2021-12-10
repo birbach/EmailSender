@@ -7,11 +7,13 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.example.api.email.model.EmailModel;
+import com.example.api.email.model.SimpleEmailModel;
 
 @Service
 public class EmailSenderService {
@@ -41,5 +43,16 @@ public class EmailSenderService {
          mailSender.send(mimeMessage);
         System.out.println("Mail Send...");
 
+    }
+    
+    public void sendSimpleEmail(SimpleEmailModel simpleEmailModel) {
+    SimpleMailMessage smm= new SimpleMailMessage();
+    
+    smm.setFrom("birbach18youssef@gmail.com");
+    smm.setTo(simpleEmailModel.getToEmail());
+    smm.setText(simpleEmailModel.getBody());
+    
+    mailSender.send(smm);
+    System.out.println("done");
     }
 }
